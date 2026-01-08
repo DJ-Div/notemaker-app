@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NoteMaker Prototype</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    margin: 0;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .app {
+    width: 399px;
+    height: 852px;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .screen {
+    position: absolute;
+    inset: 0;
+    display: none;
+  }
+
+  .screen.active {
+    display: block;
+    position: relative;
+  }
+
+  .ui {
+    width: 399px;
+    height: 852px;
+    display: block;
+  }
+
+  .tap {
+    position: absolute;
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  .scroll {
+    height: 852px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 67px;
+    position: relative;
+  }
+
+  .field {
+    position: absolute;
+    width: 309px;
+    height: 45px;
+    font-size: 14px;
+    font-family: Roboto, sans-serif;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    outline: none;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- WELCOME -->
+<div id="welcome" class="screen active">
+  <img src="Welcome.png" class="ui">
+
+  <div class="tap"
+       style="left:120px; top:507px; width:151px; height:47px;"
+       onclick="openSite()"></div>
+
+  <div class="tap"
+       style="left:122px; top:598px; width:152px; height:27px;"
+       onclick="go('introduction')"></div>
+</div>
+
+<!-- INTRODUCTION -->
+<div id="introduction" class="screen">
+  <img src="Introduction.png" class="ui">
+
+  <div class="tap"
+       style="left:181px; top:562px; width:37px; height:35px;"
+       onclick="go('products')"></div>
+
+  <div class="tap"
+       style="left:42px; top:660px; width:40px; height:46px;"
+       onclick="go('contact')"></div>
+
+  <div class="tap"
+       style="left:309px; top:660px; width:46px; height:46px;"
+       onclick="go('home')"></div>
+
+  <div class="tap"
+       style="left:167px; top:767px; width:66px; height:27px;"
+       onclick="go('welcome')"></div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="screen">
+  <img src="Contact.png" class="ui">
+
+  <!-- Call (Indian phone number) -->
+  <div class="tap"
+       style="left:25px; top:125px; width:172px; height:25px;"
+       onclick="window.location.href='tel:+917045062735'">
+  </div>
+
+  <!-- Email (smart fallback) -->
+  <div class="tap"
+       style="left:21px; top:185px; width:362px; height:25px;"
+       onclick="openEmail()">
+  </div>
+
+  <!-- Google Maps Address -->
+  <div class="tap"
+       style="left:67px; top:256px; width:300px; height:200px;"
+       onclick="window.open(
+         'https://www.google.com/maps/search/?api=1&query=22/12+Khetwadi+Sai+Bhavan+3rd+Floor+Block+32+Grant+Road+Mumbai+400004',
+         '_blank'
+       )">
+  </div>
+
+  <!-- Website -->
+  <div class="tap"
+       style="left:19px; top:498px; width:166px; height:40px;"
+       onclick="window.open('https://notemakercom.b12sites.com/', '_blank')">
+  </div>
+
+  <!-- Instagram -->
+  <div class="tap"
+       style="left:17px; top:561px; width:238px; height:43px;"
+       onclick="window.open(
+         'https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqa0daVEtsaTRscW9Jc09uZmM3S3VSRm1rRWxGQXxBQ3Jtc0ttdVluREM4ZkJuRG9GM3l1aHZaYUc1WUpvMEczemJmZlJjY2lCbWN4YW9IZFRqYnhCOFBvX0x6V29ETWVUNG52WF83VkdQWWxVZXRHMFlBZnhlZXdZcHEzdnFkdmpEMDhxdF9KOFpJZXNRc0ZUN3kwYw&q=https%3A%2F%2Fwww.instagram.com%2Fnotemaker.official',
+         '_blank'
+       )">
+  </div>
+
+  <!-- YouTube -->
+  <div class="tap"
+       style="left:12px; top:620px; width:175px; height:55px;"
+       onclick="window.open('https://www.youtube.com/@notemaker-w5t', '_blank')">
+  </div>
+
+  <!-- Back → Introduction -->
+  <div class="tap"
+       style="left:12px; top:796px; width:66px; height:27px;"
+       onclick="go('introduction')">
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div id="products" class="screen">
+  <img src="Products.png" class="ui">
+
+  <div class="tap"
+       style="left:25px; top:118px; width:354px; height:106px;"
+       onclick="go('cn')"></div>
+
+  <div class="tap"
+       style="left:25px; top:271px; width:354px; height:106px;"
+       onclick="go('rn')"></div>
+
+  <div class="tap"
+       style="left:25px; top:424px; width:354px; height:106px;"
+       onclick="go('ls')"></div>
+
+  <div class="tap"
+       style="left:25px; top:577px; width:354px; height:106px;"
+       onclick="go('projects')"></div>
+
+  <div class="tap"
+       style="left:12px; top:796px; width:66px; height:27px;"
+       onclick="go('introduction')"></div>
+</div>
+
+<!-- HOME -->
+<div id="home" class="screen">
+  <div class="scroll">
+    <img src="HomePage.png" class="ui" style="height:982px;">
+
+    <div class="tap"
+         style="left:14px; top:926px; width:66px; height:27px;"
+         onclick="go('introduction')"></div>
+  </div>
+</div>
+
+<!-- CUSTOMISED NOTES -->
+<div id="cn" class="screen">
+  <div class="scroll">
+    <img src="customised_notes.png" class="ui" style="height:1543px;">
+
+    <div class="tap"
+         style="left:12px; top:1487px; width:66px; height:27px;"
+         onclick="go('products')"></div>
+
+    <div class="tap"
+         style="left:241px; top:683px; width:130px; height:43px;"
+         onclick="openInfo('Writing (Customised Notes)', 'cn')"></div>
+
+    <div class="tap"
+         style="left:241px; top:1028px; width:130px; height:43px;"
+         onclick="openInfo('Diagrams (Customised Notes)', 'cn')"></div>
+
+    <div class="tap"
+         style="left:241px; top:1373px; width:130px; height:43px;"
+         onclick="openInfo('Writing+Diagrams (Customised Notes)', 'cn')"></div>
+  </div>
+</div>
+
+<!-- REVISION NOTES -->
+<div id="rn" class="screen">
+  <div class="scroll">
+    <img src="revision_notes.png" class="ui" style="height:1543px;">
+
+    <div class="tap"
+         style="left:12px; top:1487px; width:66px; height:27px;"
+         onclick="go('products')"></div>
+
+    <div class="tap"
+         style="left:241px; top:683px; width:130px; height:43px;"
+         onclick="openInfo('Revision (Revision Notes)', 'rn')"></div>
+
+    <div class="tap"
+         style="left:241px; top:1028px; width:130px; height:43px;"
+         onclick="openInfo('Q&A (Revision Notes)', 'rn')"></div>
+
+    <div class="tap"
+         style="left:241px; top:1373px; width:130px; height:43px;"
+         onclick="openInfo('Revision+Q&A (Revision Notes)', 'rn')"></div>
+  </div>
+</div>
+
+<!-- LECTURE SUMMARIES -->
+<div id="ls" class="screen">
+  <div class="scroll">
+    <img src="lecture_summaries.png" class="ui">
+
+    <div class="tap"
+         style="left:14px; top:796px; width:66px; height:27px;"
+         onclick="go('products')"></div>
+
+    <div class="tap"
+         style="left:135px; top:669px; width:130px; height:43px;"
+         onclick="openInfo('Lecture Summaries', 'ls')"></div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects" class="screen">
+  <div class="scroll">
+    <img src="projects.png" class="ui" style="height:1543px;">
+
+    <div class="tap"
+         style="left:12px; top:1487px; width:66px; height:27px;"
+         onclick="go('products')"></div>
+
+    <div class="tap"
+         style="left:241px; top:683px; width:130px; height:43px;"
+         onclick="openInfo('Journal (Projects)', 'projects')"></div>
+
+    <div class="tap"
+         style="left:241px; top:1028px; width:130px; height:43px;"
+         onclick="openInfo('Designed Project (Projects)', 'projects')"></div>
+
+    <div class="tap"
+         style="left:241px; top:1373px; width:130px; height:43px;"
+         onclick="openInfo('Chart (Projects)', 'projects')"></div>
+  </div>
+</div>
+
+<!-- INFO -->
+<div id="info" class="screen">
+  <img src="info.png" class="ui">
+
+  <form id="infoForm"
+        action="https://formspree.io/f/mojvgwkd"
+        method="POST"
+        accept-charset="UTF-8">
+
+    <input class="field" name="full_name" style="left:43px; top:162px;" required>
+    <input class="field" name="product" id="productField" style="left:43px; top:235px;" readonly>
+    <input class="field" type="email" name="email" style="left:43px; top:310px;" required>
+    <input class="field" type="tel" name="phone" style="left:42px; top:383px;" required>
+    <input class="field" name="country" style="left:43px; top:457px; width:160px;" required>
+    <input class="field" name="gender" style="left:222px; top:457px; width:160px;">
+    <textarea class="field" name="address" style="left:43px; top:546px; height:80px;" required></textarea>
+
+    <div onclick="submitForm()"
+         style="position:absolute; left:29px; top:596px; width:340px; height:45px; cursor:pointer;"></div>
+  </form>
+
+  <!-- INFO BACK BUTTON (FIXED LOCATION) -->
+  <div class="tap"
+       style="left:12px; top:802px; width:66px; height:27px;"
+       onclick="go(document.getElementById('info').dataset.from)"></div>
+</div>
+
+</div>
+
+<script>
+function go(id) {
+  document.querySelector('.screen.active').classList.remove('active');
+  document.getElementById(id).classList.add('active');
+}
+
+function openSite() {
+  window.open('https://notemakercom.b12sites.com/', '_blank');
+}
+
+function openInfo(product, fromPage) {
+  document.getElementById('info').dataset.from = fromPage;
+  go('info');
+  setTimeout(() => {
+    document.getElementById('productField').value = product;
+  }, 0);
+}
+
+function submitForm() {
+  document.getElementById("infoForm").submit();
+}
+
+function openEmail() {
+  // Attempt mailto first
+  window.location.href = 'mailto:notemaker.official@gmail.com';
+
+  // Fallback to Gmail web after short delay
+  setTimeout(() => {
+    window.open(
+      'https://mail.google.com/mail/?view=cm&fs=1&to=notemaker.official@gmail.com',
+      '_blank'
+    );
+  }, 500);
+}
+
+function openPhone() {
+  window.location.href = 'tel:+917045062735';
+}
+</script>
+
+</body>
+</html>
