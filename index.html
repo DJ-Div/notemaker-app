@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>NoteMaker Prototype</title>
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      content="width=device-width, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
 
 <style>
   .background,
@@ -34,8 +34,11 @@
   }
 
   .app {
-    width: 399px;
-    height: 852px;
+    width: 100vw;
+    height: 100vh;
+    max-width: 399px;
+    max-height: 852;
+    aspect-ratio: 399 / 852
     position: relative;
     overflow: hidden;
     background: #000;
@@ -402,6 +405,7 @@ window.addEventListener('resize', scaleApp);
       
 </body>
 </html>
+
 
 
 
