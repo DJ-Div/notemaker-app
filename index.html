@@ -42,6 +42,7 @@
     margin: auto;
     pointer-events: auto;
     z-index: 10;
+    transform-origin: top center;
   }
 
   .screen {
@@ -382,10 +383,24 @@ function openEmail() {
 function openPhone() {
   window.location.href = 'tel:+917045062735';
 }
-</script>
 
+function scaleApp() {
+  const app = document.querySelector('.app');
+  const scale = Math.min(
+    window.innerWidth / 399,
+    window.innerHeight / 852
+  );
+  app.style.transform = `scale(${scale})`;
+}
+
+window.addEventListener('load', scaleApp);
+window.addEventListener('resize', scaleApp);
+      
+</script>
+      
 </body>
 </html>
+
 
 
 
