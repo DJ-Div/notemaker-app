@@ -3,9 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>NoteMaker Prototype</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=399, height=852, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <style>
+  html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  touch-action: manipulation;
+  }
+
   body {
     margin: 0;
     background: #111;
@@ -21,6 +29,7 @@
     position: relative;
     overflow: hidden;
     background: #000;
+    margin: auto;
   }
 
   .screen {
@@ -52,6 +61,7 @@
     overflow-x: hidden;
     padding-bottom: 67px;
     position: relative;
+    -webkit-overflow-scrolling: touch;
   }
 
   .field {
@@ -350,3 +360,4 @@ function openPhone() {
 
 </body>
 </html>
+
