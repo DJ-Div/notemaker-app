@@ -36,7 +36,6 @@
   .app {
     width: 100vw;
     max-width: 399px;
-    aspect-ratio: 399 / 852;
     position: relative;
     overflow: hidden;
     background: #000;
@@ -398,23 +397,12 @@ function scaleApp() {
 
 window.addEventListener('load', scaleApp);
 window.addEventListener('resize', scaleApp);
-
-function () {
-  const app = document.querySelector('.app');
-
-  function lockHeight() {
-    const vh = window.innerHeight;
-    app.style.height = vh + 'px';
-  }
-
-  lockHeight();
-  window.addEventListener('resize', lockHeight);
-}
       
 </script>
       
 </body>
 </html>
+
 
 
 
